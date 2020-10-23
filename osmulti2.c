@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define INCL_DOSMISC
 #define INCL_DOSPROCESS 
 #define INCL_PM
 #include <os2.h>
