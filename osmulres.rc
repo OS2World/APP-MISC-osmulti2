@@ -1,0 +1,140 @@
+/*
+ * osmulres.rc - resource for Osuwari Multi for OS/2
+ */
+
+#include <os2.h>
+#include "osmulres.h"
+
+ICON    ID_OSMULTI  osmulti2.ico
+
+POINTER ID_PTRFUNI  funi.ptr
+POINTER ID_PTRNADE  nade.ptr
+
+BITMAP  ID_MULNORM  mul_norm.bmp
+BITMAP  ID_MULOHNO  mul_ohno.bmp
+BITMAP  ID_MULPSYU  mul_psyu.bmp
+BITMAP  ID_MULURU1  mul_urur.bmp
+BITMAP  ID_MULURU2  mul_uru2.bmp
+BITMAP  ID_MULCLOS  mul_clos.bmp
+
+MENU    IDM_POPUP
+BEGIN
+    MENUITEM    "設定(~O)", IDM_SETUP
+    MENUITEM    "情報(~A)", IDM_ABOUT
+    MENUITEM    SEPARATOR
+    MENUITEM    "終了(~X)", IDM_EXIT
+END
+
+MENU    IDM_POPUPE
+BEGIN
+    MENUITEM    "~Option", IDM_SETUP
+    MENUITEM    "~About",  IDM_ABOUT
+    MENUITEM    SEPARATOR
+    MENUITEM    "E~xit",   IDM_EXIT
+END
+
+STRINGTABLE
+BEGIN
+    IDS_NADE    "なで、"
+    IDS_FUNI    "ふに、"
+    IDS_NADE1   "「う、うれしいです。」"
+    IDS_NADE2   "「もっと、なでなでしてください」"
+    IDS_NADE3   "「もっともっと、なでなでしてください」"
+    IDS_NADE4   "「もっともっともっと、なでなでしてください」"
+    IDS_FUNI1   "「あ、あの何を．．．」"
+    IDS_FUNI2   "「．．．．．．」"
+    IDS_FUNI3   "「．．．．．．．」"
+    IDS_FUNI4   "「．．．．．．．．」"
+    IDS_PSYU    "「プシューーーーーー」"
+
+    IDSE_NADE    "*nade*"
+    IDSE_FUNI    "*funi*"
+    IDSE_NADE1   "I'm so happy!"
+    IDSE_NADE2   "More nade nade me!"
+    IDSE_NADE3   "More, More nade nade me!"
+    IDSE_NADE4   "More, More, More nade nade me!"
+    IDSE_FUNI1   "..Oh! what ?!.."
+    IDSE_FUNI2   "......"
+    IDSE_FUNI3   "......."
+    IDSE_FUNI4   "........"
+    IDSE_PSYU    "*psyuuuuuu-------*"
+END
+
+DLGTEMPLATE IDD_SETUP
+BEGIN
+    DIALOG  "お座りマルチ - 設定", 0, 0, 0, 180, 68, ,
+                                FCF_TITLEBAR | FCF_DLGBORDER
+    BEGIN
+        ICON    ID_OSMULTI, -1, 4, 40, 0, 0
+
+        AUTOCHECKBOX "メッセージを表示する", IDD_SMSG,
+	                        40, 54, 138, 12
+	AUTOCHECKBOX "効果音をならす",       IDD_SSND,
+                                40, 42, 138, 12
+
+        LTEXT "マルチの座る位置", -1,  40, 34, 72, 8
+        LTEXT "99%", IDD_SNUM,        114, 34, 24, 8
+
+	CONTROL "", IDD_SPOS,   40, 14, 138, 20, WC_SLIDER,
+                    SLS_HORIZONTAL | SLS_HOMELEFT |
+		    WS_VISIBLE
+        CTLDATA 12, 0, 101, 0, 101, 0
+
+        DEFPUSHBUTTON   "ＯＫ"      , DID_OK,      20, 2, 60, 12
+	PUSHBUTTON      "キャンセル", DID_CANCEL, 100, 2, 60, 12
+    END
+END
+
+DLGTEMPLATE IDD_SETUPE
+BEGIN
+    DIALOG  "Sitting Multi - options", 0, 0, 0, 180, 68, ,
+                                FCF_TITLEBAR | FCF_DLGBORDER
+    BEGIN
+        ICON    ID_OSMULTI, -1, 4, 40, 0, 0
+
+        AUTOCHECKBOX "show messages", IDD_SMSG,
+	                        40, 54, 138, 12
+	AUTOCHECKBOX "use sounds",    IDD_SSND,
+                                40, 42, 138, 12
+
+        LTEXT "sitting position", -1,  40, 34, 72, 8
+        LTEXT "99%", IDD_SNUM,        114, 34, 24, 8
+
+	CONTROL "", IDD_SPOS,   40, 14, 138, 20, WC_SLIDER,
+                    SLS_HORIZONTAL | SLS_HOMELEFT |
+		    WS_VISIBLE
+        CTLDATA 12, 0, 101, 0, 101, 0
+
+        DEFPUSHBUTTON   "OK"      , DID_OK,      20, 2, 60, 12
+	PUSHBUTTON      "Cancel"  , DID_CANCEL, 100, 2, 60, 12
+    END
+END
+
+DLGTEMPLATE IDD_ABOUT
+BEGIN
+    DIALOG  "お座りマルチ for OS/2 PM, Version 1.06", 0, 0, 0, 180, 68, ,
+                                FCF_TITLEBAR | FCF_DLGBORDER
+    BEGIN
+        ICON    ID_OSMULTI, -1, 4, 40, 0, 0
+	MLE     "", IDD_ADESC, 42, 2, 136, 64,
+	                MLS_READONLY | MLS_IGNORETAB |
+			MLS_VSCROLL | MLS_HSCROLL
+        DEFPUSHBUTTON   "ＯＫ", DID_OK, 2, 2, 36, 24
+    END
+END
+
+DLGTEMPLATE IDD_ABOUTE
+BEGIN
+    DIALOG  "Sitting Multi for OS/2 PM, Version 1.06", 0, 0, 0, 180, 68, ,
+                                FCF_TITLEBAR | FCF_DLGBORDER
+    BEGIN
+        ICON    ID_OSMULTI, -1, 4, 40, 0, 0
+	MLE     "", IDD_ADESC, 42, 2, 136, 64,
+	                MLS_READONLY | MLS_IGNORETAB |
+			MLS_VSCROLL | MLS_HSCROLL
+        DEFPUSHBUTTON   "OK", DID_OK, 2, 2, 36, 24
+    END
+END
+
+RESOURCE    IDD_ATYPE   IDD_ATXT_JP about.jpn
+RESOURCE    IDD_ATYPE   IDD_ATXT_EN about.eng
