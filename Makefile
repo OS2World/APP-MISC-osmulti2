@@ -3,10 +3,9 @@
 #
 
 CC	= gcc -c
-CFLAGS	= -Zmtd -O2
+CFLAGS	= -O2
 LD	= gcc
-LDFLAGS	= -s -Zmtd
-EMXPATH = D:\emx
+LDFLAGS	= -Zomf -Zmap
 
 #
 # Inference Rules
@@ -42,7 +41,7 @@ osmulti2.exe : $(OBJS) $(LIBS) osmulti2.def osmulres.res
 	$(LD) $(LDFLAGS) -o osmulti2.exe osmulti2.def osmulres.res $(OBJS) $(LIBS)
 
 osmulres.res : osmulres.rc osmulres.h osmulti2.ico $(PTRS) $(BMPS) $(TXTS)
-	rc -r -i $(EMXPATH)\include osmulres.rc
+	rc -r osmulres.rc
 
 osmulti2.o : osmulti2.c osmulti2.h osmulres.h shapewin.h
 
